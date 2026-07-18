@@ -1,0 +1,11 @@
+[{:itonami.blueprint/social-impact [:worker-safety :environmental-safety :industrial-continuity]
+  :itonami.blueprint/domain :manufacturing/metal-finishing-plating-coating-scheduling-logistics-coordination
+  :itonami.blueprint/required-technologies [:robotics :identity :audit-ledger]
+  :itonami.blueprint/isco-08 "8122"
+  :itonami.blueprint/name "Metal Finishing, Plating and Coating Plant Scheduling and Logistics Coordination Practice"
+  :itonami.blueprint/governor :plating-coord-governor
+  :itonami.blueprint/robotics true
+  :db/id -1
+  :itonami.blueprint/status :public-oss
+  :itonami.blueprint/id "cloud-itonami-isco-8122"
+  :itonami.blueprint/license "AGPL-3.0-or-later"}]
