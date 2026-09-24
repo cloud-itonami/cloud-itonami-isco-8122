@@ -1,5 +1,5 @@
 (ns platingcoord.actor-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [platingcoord.actor :as actor]
             [platingcoord.store :as store]))
 
