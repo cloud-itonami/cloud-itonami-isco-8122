@@ -1,0 +1,33 @@
+;; What this vertical's robot physically does, declared for
+;; kotoba.robotics.process (kotoba-lang/robotics). `kbb -M:physics` runs it.
+;;
+;; README "Robotics premise": a plant scheduling/logistics coordination robot
+;; schedules a metal finishing/plating/coating crew, logs runs and inventory
+;; and coordinates plating-chemical/raw-material supply; it never operates
+;; plating equipment. Its physical work is plant logistics: moving drums of
+;; plating chemicals to the line, and the rinse-tank drain that a scheduled
+;; tank change waits for.
+;;
+;; Every number without a cited source is marked `estimate` in its :basis.
+;; Replacing an estimate with a sourced value is this bot's growth work.
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isco-8122"
+ :cases
+ [{:id :chemical-drum-to-line
+   :kind :transport
+   :procedure "drum AMR carries a 200 L drum of plating chemical from the chemical store to the plating line"
+   :params {:mass-kg 120.0 :distance-m 50.0 :v-max-mps 0.8 :a-max-mps2 0.3
+            :brake-decel-mps2 1.5 :drive-force-n 400.0 :crr 0.02
+            :cog-height-m 0.30 :support-half-length-m 0.30
+            :payload-kg 250.0 :max-time-s 1200.0}
+   :sweep {:param :payload-cog-height-m :values [0.5 0.6 0.7 0.8 0.9]}
+   :quantity :min-tipover-margin
+   :limit {:min 0.3 :basis "estimate: 30 % tip-over reserve for a full drum when the AMR brakes at 1.5 m/s²"}}
+  {:id :rinse-tank-drain
+   :kind :tank-drain
+   :procedure "rinse tank is drained through its bottom valve before a scheduled tank change"
+   :params {:tank-area-m2 1.5 :h0-m 1.2 :h-target-m 0.05 :cd 0.62 :dt-s 0.5}
+   :sweep {:param :orifice-area-m2 :values [0.0005 0.001 0.002 0.003 0.005]}
+   :quantity :time-to-target-s
+   :limit {:max 900.0 :basis "estimate: 15-minute window for a tank change in the line schedule"}
+   :boundary {:lo 0.0002 :hi 0.01}}]}
