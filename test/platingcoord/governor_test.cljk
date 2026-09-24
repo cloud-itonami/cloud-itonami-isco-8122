@@ -1,5 +1,5 @@
 (ns platingcoord.governor-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [platingcoord.store :as store]
             [platingcoord.advisor :as advisor]
             [platingcoord.governor :as governor]))
