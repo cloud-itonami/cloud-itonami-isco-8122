@@ -1,7 +1,7 @@
 (ns platingcoord.store
   "SSoT for the ISCO-08 8122 metal finishing, plating and coating
   machine operators plant scheduling/logistics coordination actor
-  (itonami actor pattern, ADR-2607121000 / CLAUDE.md Actors section;
+  (itonami actor pattern, ADR-2607121000 / AGENTS.md Actors section;
   README's 'Robotics premise' — a plant scheduling/logistics
   coordination robot performs crew scheduling, production-run/
   inventory/progress-record logging and plating-chemicals/raw-material
